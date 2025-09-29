@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientThemeWrapper from "../components/ui/ClientThemeWrapper";
+import ThemeScript from "../components/ui/ThemeScript";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,13 +14,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Denis Stoica - Full-Stack Web Developer",
   description: "Portfolio of Denis Stoica, a passionate full-stack web developer specializing in React, Next.js, and modern web technologies.",
   keywords: ["Denis Stoica", "Full-Stack Developer", "React", "Next.js", "Web Developer", "Portfolio"],
   authors: [{ name: "Denis Stoica" }],
   creator: "Denis Stoica",
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     type: "website",
@@ -44,8 +49,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ClientThemeWrapper>
           {children}

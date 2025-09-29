@@ -8,6 +8,7 @@ interface ThemeContextType {
   theme: Theme
   setTheme: (theme: Theme) => void
   toggleTheme: () => void
+  mounted: boolean
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -18,36 +19,49 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    // Get theme from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme') as Theme
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const initialTheme = savedTheme || systemTheme
-    setTheme(initialTheme)
+    
+    // Get saved theme or system preference
+    try {
+      const savedTheme = localStorage.getItem('theme') as Theme
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      const initialTheme = savedTheme || systemTheme
+      
+      console.log('Theme initialization:', { savedTheme, systemTheme, initialTheme })
+      
+      if (initialTheme !== theme) {
+        setTheme(initialTheme)
+      }
+    } catch (error) {
+      console.error('Error initializing theme:', error)
+    }
   }, [])
 
   useEffect(() => {
     if (!mounted) return
 
+    console.log('Applying theme:', theme)
+    
     // Apply theme to document
     const root = document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
     
     // Save theme to localStorage
-    localStorage.setItem('theme', theme)
+    try {
+      localStorage.setItem('theme', theme)
+    } catch (error) {
+      console.error('Error saving theme:', error)
+    }
   }, [theme, mounted])
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    console.log('Toggling theme from', theme, 'to', newTheme)
+    setTheme(newTheme)
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   )
@@ -65,10 +79,12 @@ export function useTheme() {
 export function useThemeSafe() {
   const context = useContext(ThemeContext)
   if (context === undefined) {
+    console.warn('useThemeSafe: ThemeContext not found, returning defaults')
     return {
       theme: 'light' as const,
-      setTheme: () => {},
-      toggleTheme: () => {}
+      setTheme: () => console.warn('setTheme called outside ThemeProvider'),
+      toggleTheme: () => console.warn('toggleTheme called outside ThemeProvider'),
+      mounted: false
     }
   }
   return context
