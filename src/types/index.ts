@@ -8,7 +8,7 @@ export interface Project {
   githubUrl: string
   liveUrl: string
   featured: boolean
-  category: 'frontend' | 'fullstack' | 'mobile' | 'other'
+  categories: ('frontend' | 'fullstack' | 'mobile')[]
 }
 
 export interface Skill {

@@ -24,19 +24,13 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/denisstoica',
+    url: 'https://www.linkedin.com/in/denis-andrei-stoica-4788bb387/',
     icon: Linkedin,
     color: 'hover:text-blue-600'
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/denisstoica',
-    icon: Twitter,
-    color: 'hover:text-blue-400'
-  },
-  {
     name: 'Email',
-    url: 'mailto:denis.stoica@example.com',
+    url: 'mailto:denis2006stoica@gmail.com',
     icon: Mail,
     color: 'hover:text-red-500'
   }
@@ -46,19 +40,13 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'denis.stoica@example.com',
-    copyable: true
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '+1 (555) 123-4567',
+    value: 'denis2006stoica@gmail.com',
     copyable: true
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'San Francisco, CA',
+    value: 'Bucharest, RO',
     copyable: false
   }
 ]
@@ -80,20 +68,30 @@ export default function ContactSection() {
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true)
     
-    // Simulate form submission
     try {
-      // Replace with actual form submission logic
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      console.log('Form data:', data)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to send message')
+      }
+
       setSubmitSuccess(true)
       reset()
       
       setTimeout(() => {
         setSubmitSuccess(false)
-      }, 3000)
+      }, 5000)
     } catch (error) {
       console.error('Form submission error:', error)
+      // You might want to add error state handling here
+      alert('Failed to send message. Please try again or contact me directly at denis2006stoica@gmail.com')
     } finally {
       setIsSubmitting(false)
     }
@@ -319,7 +317,7 @@ export default function ContactSection() {
             >
               <p className="text-sm text-muted-foreground text-center">
                 <strong>Response Time:</strong> I typically respond within 24 hours. 
-                For urgent matters, feel free to reach out directly via email or phone.
+                For urgent matters, feel free to reach out directly via email.
               </p>
             </motion.div>
           </motion.div>

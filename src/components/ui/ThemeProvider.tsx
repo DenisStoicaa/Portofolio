@@ -26,8 +26,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       const initialTheme = savedTheme || systemTheme
       
-      console.log('Theme initialization:', { savedTheme, systemTheme, initialTheme })
-      
       if (initialTheme !== theme) {
         setTheme(initialTheme)
       }
@@ -39,8 +37,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!mounted) return
 
-    console.log('Applying theme:', theme)
-    
     // Apply theme to document
     const root = document.documentElement
     root.classList.remove('light', 'dark')
@@ -56,7 +52,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
-    console.log('Toggling theme from', theme, 'to', newTheme)
     setTheme(newTheme)
   }
 

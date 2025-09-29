@@ -32,27 +32,28 @@ const experiences: Experience[] = [
   {
     id: '4',
     title: 'Styling with Tailwind CSS',
-    period: '2022',
+    period: '2023',
     description: 'Adopted Tailwind CSS for utility-first styling approach. Learned to create beautiful, responsive designs quickly while maintaining consistency across projects.',
     technologies: ['Tailwind CSS', 'Utility-First CSS', 'Design Systems'],
     achievement: 'Redesigned multiple projects with improved UI/UX'
   },
-  {
+   {
     id: '5',
-    title: 'Full-Stack Development',
-    period: '2023',
-    description: 'Expanded into full-stack development with Next.js and Firebase. Learned about server-side rendering, API routes, and backend services integration.',
-    technologies: ['Next.js', 'Firebase', 'API Development', 'Authentication'],
-    achievement: 'Launched first full-stack e-commerce application'
+    title: 'Advanced Techniques & Optimization',
+    period: '2024',
+    description: 'Focused on performance optimization, TypeScript adoption, advanced animations, and best practices.',
+    technologies: ['TypeScript', 'Performance Optimization', 'Framer Motion', 'SEO'],
+    achievement: 'Migrated all projects to TypeScript and achieved 95%+ performance scores'
   },
   {
     id: '6',
-    title: 'Advanced Techniques & Optimization',
-    period: '2024',
-    description: 'Focused on performance optimization, TypeScript adoption, advanced animations, and best practices. Contributing to open-source projects and mentoring others.',
-    technologies: ['TypeScript', 'Performance Optimization', 'Framer Motion', 'SEO'],
-    achievement: 'Portfolio website achieving 100% Lighthouse scores'
+    title: 'Full-Stack Development',
+    period: '2025',
+    description: 'Expanded into full-stack development with Next.js and Firebase. Learned about server-side rendering, API routes, and backend services integration.',
+    technologies: ['Next.js', 'Firebase', 'API Development', 'Authentication'],
+    achievement: 'Launched first full-stack application'
   }
+ 
 ]
 
 const achievements = [

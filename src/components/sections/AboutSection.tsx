@@ -1,43 +1,45 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Code, Smartphone, Palette, Database, Globe, Zap } from 'lucide-react'
+import Image from 'next/image'
 
 const skills = [
   {
     name: 'Frontend Development',
     icon: Code,
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js'],
+    technologies: ['Next.js', 'React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Vite'],
     description: 'Creating responsive, interactive user interfaces'
   },
   {
     name: 'Styling & Design',
     icon: Palette,
-    technologies: ['Tailwind CSS', 'Styled Components', 'Framer Motion'],
+    technologies: ['Tailwind CSS', 'Styled Components', 'Framer Motion', 'SASS/SCSS', 'CSS Modules', 'Material-UI', 'ShadCN', 'Figma'],
     description: 'Crafting beautiful, modern designs with smooth animations'
   },
   {
     name: 'Backend Development',
     icon: Database,
-    technologies: ['Node.js', 'Firebase', 'PostgreSQL', 'REST APIs'],
+    technologies: ['Node.js', 'Firebase', 'REST APIs','Express.js','Vercel'],
     description: 'Building scalable server-side applications and databases'
   },
   {
     name: 'Mobile Development',
     icon: Smartphone,
-    technologies: ['React Native', 'PWA', 'Responsive Design'],
+    technologies: ['React Native', 'PWA', 'Responsive Design', 'Expo', 'Mobile-First Design'],
     description: 'Mobile-first development approach'
   },
   {
     name: 'Web Technologies',
     icon: Globe,
-    technologies: ['Git', 'Vercel', 'Docker', 'Linux'],
+    technologies: ['Git', 'Vercel', 'CI/CD', 'Netlify','Bash', 'ESLint', 'Prettier'],
     description: 'Modern development tools and deployment practices'
   },
   {
     name: 'Performance',
     icon: Zap,
-    technologies: ['SEO', 'Lighthouse', 'Code Splitting', 'Optimization'],
+    technologies: ['SEO', 'Lighthouse', 'Code Splitting', 'Optimization', 'Lazy Loading', 'Web Vitals', 'Caching', 'CDN', 'Image Optimization'],
     description: 'Optimizing for speed and user experience'
   }
 ]
@@ -56,6 +58,7 @@ const techStack = [
 ]
 
 export default function AboutSection() {
+
   return (
     <section id="about" className="py-20 bg-secondary/5">
       <div className="container mx-auto px-4">
@@ -83,8 +86,14 @@ export default function AboutSection() {
             <div className="relative mb-8">
               <div className="w-64 h-64 mx-auto relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-600 rounded-full blur-2xl opacity-30 animate-pulse" />
-                <div className="relative w-full h-full bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-full border-2 border-primary/20 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-primary">DS</div>
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                  <Image
+                    src="/images/Me.jpg"
+                    alt="Denis Stoica"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -134,7 +143,7 @@ export default function AboutSection() {
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">{skill.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {skill.technologies.slice(0, 3).map((tech) => (
+                  {skill.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
@@ -142,11 +151,6 @@ export default function AboutSection() {
                       {tech}
                     </span>
                   ))}
-                  {skill.technologies.length > 3 && (
-                    <span className="px-2 py-1 text-xs text-muted-foreground">
-                      +{skill.technologies.length - 3} more
-                    </span>
-                  )}
                 </div>
               </motion.div>
             ))}
