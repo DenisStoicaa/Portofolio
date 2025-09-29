@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientThemeWrapper from "../components/ui/ClientThemeWrapper";
 import ThemeScript from "../components/ui/ThemeScript";
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://denisstoica.dev",
+    url: "https://denisstoica.vercel.app/",
     title: "Denis Stoica - Full-Stack Web Developer",
     description: "Portfolio of Denis Stoica, a passionate full-stack web developer specializing in React, Next.js, and modern web technologies.",
     siteName: "Denis Stoica Portfolio",
@@ -69,6 +70,7 @@ export default function RootLayout({
       >
         <ClientThemeWrapper>
           {children}
+          <Analytics />
         </ClientThemeWrapper>
       </body>
     </html>
