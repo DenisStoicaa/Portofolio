@@ -31,6 +31,6 @@ declare module "*.less" {
 
 // Global CSS files (like globals.css) - side-effect imports
 declare module "*.css" {
-  const content: any;
+  const content: Record<string, string>;
   export = content;
 }

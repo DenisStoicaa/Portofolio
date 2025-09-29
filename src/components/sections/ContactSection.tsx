@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Mail, Github, Linkedin, Twitter, Send, Copy, Check, MapPin, Phone } from 'lucide-react'
+import { Mail, Github, Linkedin, Send, Copy, Check, MapPin } from 'lucide-react'
 import { ContactForm } from '../../types'
 import { copyToClipboard } from '../../lib/utils'
 
@@ -122,8 +122,8 @@ export default function ContactSection() {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-8" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. 
-            Let's create something amazing together!
+            Have a project in mind or want to collaborate? I&apos;d love to hear from you. 
+            Let&apos;s create something amazing together!
           </p>
         </motion.div>
 
@@ -135,7 +135,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-8">Let's Connect</h3>
+            <h3 className="text-2xl font-bold mb-8">Let&apos;s Connect</h3>
             
             {/* Contact Info */}
             <div className="space-y-6 mb-8">
@@ -211,7 +211,7 @@ export default function ContactSection() {
               </div>
               <p className="text-sm text-muted-foreground">
                 Currently accepting new freelance projects and full-time opportunities. 
-                Let's discuss how I can help bring your ideas to life!
+                Let&apos;s discuss how I can help bring your ideas to life!
               </p>
             </motion.div>
           </motion.div>
@@ -301,7 +301,7 @@ export default function ContactSection() {
                   <div className="flex items-center gap-3">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-green-600 dark:text-green-400 font-medium">
-                      Message sent successfully! I'll get back to you soon.
+                      Message sent successfully! I&apos;ll get back to you soon.
                     </span>
                   </div>
                 </motion.div>

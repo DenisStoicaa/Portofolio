@@ -96,7 +96,7 @@ export default function ExperienceSection() {
           <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-8" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             From learning HTML basics to building full-stack applications, 
-            here's how my web development journey has evolved over the years.
+            here&apos;s how my web development journey has evolved over the years.
           </p>
         </motion.div>
 

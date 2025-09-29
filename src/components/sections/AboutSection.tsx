@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Code, Smartphone, Palette, Database, Globe, Zap } from 'lucide-react'
 import Image from 'next/image'
@@ -101,7 +100,7 @@ export default function AboutSection() {
             <div className="text-center lg:text-left">
               <h3 className="text-2xl font-bold mb-4">Denis Stoica</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I'm a passionate full-stack developer with a strong foundation in modern web technologies. 
+                I&apos;m a passionate full-stack developer with a strong foundation in modern web technologies. 
                 My journey began with HTML and CSS, and has evolved into creating comprehensive web applications 
                 using React, Next.js, and Firebase.
               </p>
@@ -111,7 +110,7 @@ export default function AboutSection() {
                 optimization, and accessibility.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, I enjoy staying up-to-date with the latest web technologies, 
+                When I&apos;m not coding, I enjoy staying up-to-date with the latest web technologies, 
                 contributing to open-source projects, and continuously learning new skills to improve 
                 my craft.
               </p>

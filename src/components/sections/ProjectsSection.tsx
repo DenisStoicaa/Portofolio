@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Star, Filter } from 'lucide-react'
+import { ExternalLink, Star } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
 import { Project } from '../../types'
